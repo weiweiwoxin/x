@@ -56,13 +56,19 @@ if ($GLOBALS['style_BG'] != '') {
                 <div class="logo">
                     <div class="header-logo">
                         <!-- 标题开始 -->
-                        <span class="b">Y</span>
-                        <span class="b">U</span>
+                        <span class="b">L</span>
+                        <span class="b">e</span>
+                        <span class="b">m</span>
+                        <span class="b">o</span>
+                        <span class="b">n</span>
+
                         <a href="<?php $this->options->siteUrl(); ?>">
-                            <span class="w">M</span>
+                            <span class="w">X</span>
                         </a>
-                        <span class="b">O</span>
-                        <span class="b">E</span>
+                        <span class="b">S</span>
+                        <span class="b">a</span>
+                        <span class="b">a</span>
+                        <span class="b">S</span>
                         <!-- 标题结束 -->
                         <a id="btn-menu" href="javascript:isMenu();">
                             <span class="b">·</span>
