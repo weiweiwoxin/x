@@ -31,6 +31,7 @@ if ($GLOBALS['style_BG'] != '') {
     <link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/prism.css'); ?>">
     <link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/zoom.css'); ?>">
     <link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/main.css'); ?>">
+    <link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/icofont/icofont.min.css'); ?>">
     <?php if ($GLOBALS['isIconNav'] == 'on') : ?>
         <link type="text/css" rel="stylesheet" href="<?php $this->options->themeUrl('assert/css/twemoji-awesome.css'); ?>">
     <?php endif; ?>

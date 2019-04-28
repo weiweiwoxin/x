@@ -11,36 +11,60 @@
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-$this->need('header.php');
+ $this->need('header.php');
 ?>
 
 <div class="container-fluid">
     <div class="row">
-        <div id="main" role="main">
-            <ul class="post-list clearfix">
-                <?php while ($this->next()) : ?>
-                    <li class="post-item grid-item" itemscope itemtype="http://schema.org/BlogPosting">
-                        <a class="post-link" href="<?php $this->permalink() ?>">
-                            <h3 class="post-title"><time class="index-time" datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date('M j, Y'); ?></time><br><?php $this->title() ?></h3>
-                            <?php if ($this->category) : ?>
-                                <div class="post-meta">
-                                    <?php echo $this->category; ?>
-                                </div>
-                            <?php endif; ?>
-                        </a>
-                    </li>
-                <?php endwhile; ?>
-            </ul>
-        </div>
+    <div id="main" role="main">
+      <ul class="post-list clearfix">
+      <?php while($this->next()): ?>
+        <li class="post-item grid-item" itemscope itemtype="http://schema.org/BlogPosting">
+          <a class="post-link" href="<?php $this->permalink() ?>">
+            <h3 class="post-title"><time class="index-time" datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date('M j, Y'); ?></time><br><?php $this->title() ?></h3>
+            <?php if($this->category): ?>
+            <div class="post-meta">
+              <?php echo $this->category; ?>
+            </div>
+            <?php endif; ?>
+
+<div class="post-img" style="
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 15px;
+    border-radius: 40px;
+    top: 36px;
+">
+   <img src="<?php echo img_postthumb($this->cid); ?> " />
+</div>
+
+ <ul className="icofont-ul post-count" style="
+            height: 30px;
+            position: absolute;
+            bottom:0;
+            right: 20px;
+
+
+">
+            <li style="list-style: none;float:left;color:#bbb;"><span class="icofont-eye"></span> <?php echo ViewsCounter_Plugin::getViews(); ?></li>
+            <li style="list-style: none;float:left;padding-left: 50px;cursor: pointer;" class="post-like" data-pid="<?php echo $this->cid ?>"><span class="icofont-heart"></span> <?php Like_Plugin::theLike(false); ?></li>
+        </ul>
+          </a>
+
+        </li>
+      <?php endwhile; ?>
+      </ul>
     </div>
+  </div>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="nav-page">
-            <?php $this->pageNav('&laquo;', '&raquo;'); ?>
-        </div>
+    <div class="nav-page">
+      <?php $this->pageNav('&laquo;', '&raquo;'); ?>
     </div>
+  </div>
 </div>
 
 <?php $this->need('footer.php'); ?>
