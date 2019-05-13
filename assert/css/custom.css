@@ -1,0 +1,153 @@
+/**
+  * #sidebar left side
+ */
+#sidebar > .fixed{
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    width: 230px;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    bottom: -100px;
+    background-color: #171717;
+    color: #ccc;
+}
+
+#sidebar{
+    width: 0;
+}
+
+#sidebar > .logo{
+    margin-top: 0;
+}
+
+#sidebar  .nav-tags{
+    /*display: none;*/
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    /*overflow: scroll;*/
+    /*overflow-x: hidden;*/
+    margin: 0;
+    width: 100%;
+}
+
+#sidebar .nav-tags li a {
+    text-decoration: none;
+    color: #686868;
+    display: block;
+    padding: 9px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#sidebar .nav-tags li a:hover {
+    color: #fff;
+}
+
+#sidebar  ul{
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+
+/***
+ * #body post card
+ */
+#main > .main-wrap{
+    margin: 0 auto;
+}
+
+.panel{
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 20px 20px;
+    margin-bottom: 40px;
+}
+.card {
+    box-shadow: 0px 2px 0px rgba(170,170,170,0.1);
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.panel .panel-title{
+    padding: 8px 12px;
+    display: inline-block;
+    margin-bottom: 16px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #666;
+}
+.panel .panel-body {
+    overflow: hidden;
+}
+
+
+/**
+  * 自适应布局
+ */
+@media screen and (min-width: 1300px){
+    #main > .main-wrap{
+        margin-left: 230px;
+    }
+
+    #main > .container-fluid:first-of-type{
+        width: 1050px;
+    }
+}
+
+@media screen and (max-width: 1299px) and (min-width: 992px){
+    #main > .main-wrap{
+        margin-left: 230px;
+
+    }
+    #main > .container-fluid:first-of-type{
+        width: 760px;
+    }
+
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px){
+    #main > .main-wrap{
+        margin-left: 180px;
+
+    }
+    #main > .container-fluid:first-of-type{
+        width: 580px;
+    }
+    #sidebar > .fixed {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    #sidebar > .fixed {
+        transform: translate(-230px, 0);
+        transition: transform 430ms cubic-bezier(0.3, 0, 0, 1);
+    }
+
+    #main > .main-wrap{
+        margin-left: 0;
+    }
+
+    #main > .container-fluid:first-of-type{
+
+    }
+
+}
+
+@media screen and (min-height: 900px){
+    #sidebar .nav-tags {
+        max-height: 400px;
+    }
+}
+
+
