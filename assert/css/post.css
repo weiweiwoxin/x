@@ -104,7 +104,7 @@
 transform: scale(1);
 -webkit-transition: -webkit-transform 0.2s;
 -moz-transition: -moz-transform 0.2s;
--ms-transition: -moz-transform 0.2s
+-ms-transition: -moz-transform 0.2s;
 transition: transform 0.2s;
 }
 .post li:hover .cover img { 
