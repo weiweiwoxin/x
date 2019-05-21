@@ -50,11 +50,52 @@ if ($GLOBALS['style_BG'] != '') {
     <!--[if lt IE 8]>
     <div class="browsehappy" role="dialog"><?php _e('当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>'); ?>.</div>
 <![endif]-->
+    <header class="mobile-header">
+        <div class="mobile-header-logo">
+            <img src="#">
+        </div>
+    </header>
 
-    <div id="sidebar" class="clearfix">
-        <div class="container-fluid fixed">
-            <div class="row">
+    <div class="mobile-side-btn" >
+        <div class="mobile-nav-bar">
+            <i class="icofont-navigation-menu icofont-2x"></i>
+        </div>
+    </div>
+
+    <header id="header" class="clearfix">
+        <div class="container-fluid">
+            <div class="row header-container">
+                <div class="header-item">
+                    <a class="header-link" href="<?php $this->options->siteUrl(); ?>">
+                        <svg class="octicon  v-align-middle" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true">
+                            <!-- 标题开始 -->
+                            <span class="b">L</span>
+                            <span class="b">e</span>
+                            <span class="b">m</span>
+                            <span class="b">o</span>
+                            <span class="b">n</span>
+
+                            <a href="<?php $this->options->siteUrl(); ?>">
+                                <span class="w">X</span>
+                            </a>
+                            <span class="b">S</span>
+                            <span class="b">a</span>
+                            <span class="b">a</span>
+                            <span class="b">S</span>
+                            <!-- 标题结束 -->
+<!--                            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>-->
+                        </svg>
+                    </a>
+                </div>
                 <div class="logo">
+                    <div id="database-search-box" class="search-box mr-3 position-relative" aria-expanded="false">
+                        <form id="search" method="post" action="./" role="search">
+                            <label class="form-control input-sm header-search-wrapper p-0 header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center js-chromeless-input-container">
+                                <input class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable" autocomplete="off" type="text" name="s" id="database-search" placeholder="Type something~" />
+                                <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
+                            </label>
+                        </form>
+                    </div>
                     <div class="header-logo">
                         <!-- 标题开始 -->
                         <span class="b">L</span>
@@ -96,7 +137,28 @@ if ($GLOBALS['style_BG'] != '') {
                             <?php endif; ?>
                         </a>
                     </div>
+                    <div id="menu-page">
+                        <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
+                        <?php while ($pages->next()) : ?>
+                            <a href="<?php $pages->permalink(); ?>">
+                                <li><?php $pages->title(); ?></li>
+                            </a>
+                        <?php endwhile; ?>
+                        <?php if ($GLOBALS['isRSS'] == 'on') : ?>
+                            <a href="<?php $this->options->feedUrl(); ?>">
+                                <li>RSS</li>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+
                 </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="sidebar" class="clearfix">
+        <div class="container-fluid fixed">
+            <div class="row">
                 <ul class="nav-tags text-center">
                     <?php $this->widget('Widget_Metas_Category_List')->to($categorys); ?>
                     <?php while($categorys->next()): ?>
@@ -137,74 +199,6 @@ if ($GLOBALS['style_BG'] != '') {
 
         <div class="container-fluid">
 
-
-        <header id="header" class="clearfix">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="logo">
-                        <div class="header-logo">
-                            <!-- 标题开始 -->
-                            <span class="b">L</span>
-                            <span class="b">e</span>
-                            <span class="b">m</span>
-                            <span class="b">o</span>
-                            <span class="b">n</span>
-
-                            <a href="<?php $this->options->siteUrl(); ?>">
-                                <span class="w">X</span>
-                            </a>
-                            <span class="b">S</span>
-                            <span class="b">a</span>
-                            <span class="b">a</span>
-                            <span class="b">S</span>
-                            <!-- 标题结束 -->
-                            <a id="btn-menu" href="javascript:isMenu();">
-                                <span class="b">·</span>
-                            </a>
-                            <a href="javascript:isMenu1();">
-                                <?php if ($GLOBALS['isIconNav'] == 'on') : ?>
-                                    <span id="menu-1" class="bf"><i class="twa twa-flags"></i></span>
-                                <?php else : ?>
-                                    <span id="menu-1" class="bf">1</span>
-                                <?php endif; ?>
-                            </a>
-                            <a href="javascript:isMenu2();">
-                                <?php if ($GLOBALS['isIconNav'] == 'on') : ?>
-                                    <span id="menu-2" class="bf"><i class="twa twa-evergreen-tree"></i></span>
-                                <?php else : ?>
-                                    <span id="menu-2" class="bf">2</span>
-                                <?php endif; ?>
-                            </a>
-                            <a href="javascript:isMenu3();">
-                                <?php if ($GLOBALS['isIconNav'] == 'on') : ?>
-                                    <span id="menu-3" class="bf"><i class="twa twa-mag"></i></span>
-                                <?php else : ?>
-                                    <span id="menu-3" class="bf">3</span>
-                                <?php endif; ?>
-                            </a>
-                        </div>
-                        <div id="menu-page">
-                            <?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
-                            <?php while ($pages->next()) : ?>
-                                <a href="<?php $pages->permalink(); ?>">
-                                    <li><?php $pages->title(); ?></li>
-                                </a>
-                            <?php endwhile; ?>
-                            <?php if ($GLOBALS['isRSS'] == 'on') : ?>
-                                <a href="<?php $this->options->feedUrl(); ?>">
-                                    <li>RSS</li>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                        <div id="search-box">
-                            <form id="search" method="post" action="./" role="search">
-                                <input autocomplete="off" type="text" name="s" id="menu-search" placeholder="Type something~" />
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
 
         <div id="body" class="clearfix">
 

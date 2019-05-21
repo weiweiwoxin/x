@@ -21,12 +21,32 @@
             <?php if ($this->have()): ?>
             <?php while($this->next()): ?>
                 <li class="post-item grid-item" itemscope itemtype="http://schema.org/BlogPosting">
-                    <a class="post-link" href="<?php $this->permalink() ?>">
-                        <h3 class="post-title"><time class="index-time" datetime="<?php $this->date('c'); ?>" itemprop="datePublished"><?php $this->date('M j, Y'); ?></time><br><?php $this->title() ?></h3>
-                        <div class="post-meta">
-                            <?php echo $this->category; ?>
+
+                    <div class="card" style="background-color: rgba(255, 255, 255, 0.5);">
+                        <a class="card-heading link-tooltip" title="<?php $this->title() ?>" href="<?php $this->permalink() ?>" target="_blank">
+                            <!--        <a class="card-heading link-tooltip" title="--><!--" href="--><!--" target="_blank">-->
+                            <span class="card-icon">
+                                            <img src="<?php echo img_postthumb($this->cid); ?>">
+                                        </span>
+                            <span class="card-title"><?php $this->title() ?></span>
+                        </a>
+                        <div class="card-body">
+
                         </div>
-                    </a>
+                        <div class="card-footer">
+                            <div class="footer-item">
+                                <i class="icofont-eye"></i>
+                                <span> <?php echo ViewsCounter_Plugin::getViews(); ?></span>
+                            </div>
+                            <div class="footer-item">
+                                <div class="clearfix" style="text-align: center;">
+                                    <i class="icofont-heart"></i>
+                                    <span class="post-like" data-pid="<?php echo $this->cid ?>" > <?php Like_Plugin::theLike(false); ?></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </li>
             <?php endwhile; ?>
             <?php else: ?>

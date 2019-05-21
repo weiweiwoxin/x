@@ -23,7 +23,7 @@ $this->need('header.php');
             <div class="panel" role="panel">
 
                 <div class="panel-title card">
-                    <i></i>
+                    <i class="icofont-label"></i>
                     <?php $categories->name(); ?>
                 </div>
 
@@ -31,31 +31,35 @@ $this->need('header.php');
                     <?php $this->widget('Widget_Archive@category-' . $categories->mid, 'pageSize=10000&type=category', 'mid=' . $categories->mid)->to($posts); ?>
                     <ul class="post-list clearfix">
                     <?php while ($posts->next()): ?>
-                        <li class="post-item grid-item" itemscope itemtype="http://schema.org/BlogPosting"
-                            style="background-image: url(<?php echo img_postthumb($posts->cid); ?>)">
-                            <a class="post-link" href="<?php $posts->permalink() ?>"
-                               style="background-color: rgba(255, 255, 255, 0.5);">
-                                <h3 class="post-title">
-                                    <time class="index-time" datetime="<?php $posts->date('c'); ?>"
-                                          itemprop="datePublished"><?php $posts->date('M j, Y'); ?></time>
-                                    <br><?php $posts->title() ?></h3>
-                                <?php if ($posts->category): ?>
-                                    <div class="post-meta">
-                                        <?php echo $posts->category; ?>
-                                    </div>
-                                <?php endif; ?>
 
-                                <ul className="icofont-ul post-count" style="height: 30px;position: absolute;bottom:0;right: 20px;">
-                                    <li style="list-style: none;float:left;color:#484848;"><span
-                                                class="icofont-eye"></span> <?php echo ViewsCounter_Plugin::getViews(); ?>
-                                    </li>
-                                    <li style="list-style: none;float:left;padding-left: 50px;cursor: pointer;"
-                                        class="post-like" data-pid="<?php echo $posts->cid ?>"><span
-                                                class="icofont-heart"></span> <?php Like_Plugin::theLike(false); ?>
-                                    </li>
-                                </ul>
-                            </a>
-                        </li>
+                            <li class="post-item grid-item" >
+                                <div class="card" style="background-color: rgba(255, 255, 255, 0.5);">
+                                    <a class="card-heading link-tooltip" title="<?php $posts->title() ?>" href="<?php $posts->permalink() ?>" target="_blank">
+                                        <!--        <a class="card-heading link-tooltip" title="--><!--" href="--><!--" target="_blank">-->
+                                        <span class="card-icon">
+                                            <img src="<?php echo img_postthumb($posts->cid); ?>">
+                                        </span>
+                                        <span class="card-title"><?php $posts->title() ?></span>
+                                    </a>
+                                    <div class="card-body">
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="footer-item">
+                                                <i class="icofont-eye"></i>
+                                                <span> <?php echo ViewsCounter_Plugin::getViews(); ?></span>
+                                        </div>
+                                        <div class="footer-item">
+                                            <div class="clearfix" style="text-align: center;">
+                                                <i class="icofont-heart"></i>
+                                                <span class="post-like" data-pid="<?php echo $posts->cid ?>" > <?php Like_Plugin::theLike(false); ?></span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
                     <?php endwhile; ?> <!-- end posts -->
                     </ul>
                 </div>
@@ -65,12 +69,6 @@ $this->need('header.php');
     </div>
 <?php endwhile; ?> <!-- end categories -->
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="nav-page">
-            <?php $this->pageNav('&laquo;', '&raquo;'); ?>
-        </div>
-    </div>
-</div>
+
 
 <?php $this->need('footer.php'); ?>
